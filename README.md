@@ -10,12 +10,19 @@ Trò chơi lấy ý tưởng từ game phá gạch cổ điển, người chơi 
 
 Luật chơi:
 - Khi bắt đầu mỗi màn chơi, người chơi nhấn chuột trái cho quả bóng di chuyển, sau đó di chuyển chuột để điều khiển thanh trượt qua lại trên màn hình đỡ quả bóng để phá vỡ bức tường gạch. Khi quả bóng chạm vào cạnh dưới của màn hình, người chơi sẽ mất một mạng. Khi bắt đầu người chơi sẽ có ba mạng, khi thua cả 3 mạng thì trò chơi kết thúc.
+
 Thanh trượt: ![NewPaddle](https://user-images.githubusercontent.com/100273875/169706560-d7652358-7160-48d3-af20-2f0379f450e5.png)
 
 - Có 3 loại gạch người chơi sẽ gặp:
-![GreenBrick](https://user-images.githubusercontent.com/100273875/169706143-d710be88-7222-4446-b704-689f3ac9fbe6.png) Gạch xanh lá sẽ biến mất sau một lần bóng đập
-![YellowBrick](https://user-images.githubusercontent.com/100273875/169706207-a5d5474e-eb1e-4177-9995-851a68b75644.png) Gạch vàng sẽ chuyển thành gạch xanh lá sau một lần bóng đập
-![RedBrick](https://user-images.githubusercontent.com/100273875/169706256-cf42d6e1-3b7e-4b03-b3a6-87baae5c948b.png) Gạch đỏ sẽ chuyển thành gạch vàng sau một lần bóng đập
+
+![GreenBrick](https://user-images.githubusercontent.com/100273875/169706667-e1d33d24-b667-4a98-a1dd-e25ee2c5c48d.png) Gạch xanh lá sẽ biến mất sau một lần bóng đập.
+
+
+![YellowBrick](https://user-images.githubusercontent.com/100273875/169706689-eb1a81dc-c18b-4a60-ad23-39f7fac3cd6f.png) Gạch vàng sẽ chuyển thành gạch xanh lá sau một lần bóng đập.
+
+
+![RedBrick](https://user-images.githubusercontent.com/100273875/169706714-e1a8c249-bfe1-4d48-9148-552cf5ccbe34.png) Gạch đỏ sẽ chuyển thành gạch vàng sau một lần bóng đập.
+
 
 Menu bắt đầu
 
