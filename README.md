@@ -3,7 +3,6 @@ Project game cuối kì: Nguyễn Việt Anh - 21020277
 # 1. Hướng dẫn cài đặt
 Tạo folder muốn cài đặt game, mở bằng Terminal (Visual Studio Code, PowerShell,...), lần lượt nhập các lệnh
 git clone https://github.com/Nguyen-VietAnh/Brick_breaker_game.git
-
 cd .\Brick_breaker_game\
 .\Brick_game.exe
 
@@ -24,6 +23,7 @@ Thanh trượt: ![NewPaddle](https://user-images.githubusercontent.com/100273875
 
 
 ![RedBrick](https://user-images.githubusercontent.com/100273875/169706714-e1a8c249-bfe1-4d48-9148-552cf5ccbe34.png) Gạch đỏ sẽ chuyển thành gạch vàng sau một lần bóng đập.
+
 
 
 
@@ -68,7 +68,7 @@ Ngược lại khi người chơi mất hết 3 mạng, menu kết thúc sẽ xu
 
 
 # 4. Kết luận
-Hiểu được cách cài đặt một số thư viện đồ hoạ, cách tạo ra, quản lý và vận hành một project.
+- Hiểu được cách cài đặt một số thư viện đồ hoạ, cách tạo ra, quản lý và vận hành một project.
 
 ## Hướng phát triển
 - Tạo thêm nhiều level cho game
