@@ -10,9 +10,7 @@ Trò chơi lấy ý tưởng từ game phá gạch cổ điển, người chơi 
 
 Luật chơi:
 - Khi bắt đầu mỗi màn chơi, người chơi nhấn chuột trái cho quả bóng di chuyển, sau đó di chuyển chuột để điều khiển thanh trượt qua lại trên màn hình đỡ quả bóng để phá vỡ bức tường gạch. Khi quả bóng chạm vào cạnh dưới của màn hình, người chơi sẽ mất một mạng. Khi bắt đầu người chơi sẽ có ba mạng, khi thua cả 3 mạng thì trò chơi kết thúc.
-
-![NewPaddle](https://user-images.githubusercontent.com/100273875/169706454-012be942-d3ac-4a86-b046-8052a37ee53e.png)
-
+Thanh trượt: ![NewPaddle](https://user-images.githubusercontent.com/100273875/169706560-d7652358-7160-48d3-af20-2f0379f450e5.png)
 
 - Có 3 loại gạch người chơi sẽ gặp:
 ![GreenBrick](https://user-images.githubusercontent.com/100273875/169706143-d710be88-7222-4446-b704-689f3ac9fbe6.png) Gạch xanh lá sẽ biến mất sau một lần bóng đập
