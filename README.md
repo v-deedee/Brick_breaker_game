@@ -51,3 +51,32 @@ Ngược lại khi người chơi mất hết 3 mạng, menu kết thúc sẽ xu
 
 
 ![pic5](https://user-images.githubusercontent.com/100273875/169707024-d0e8e16a-449e-4116-88d1-9dc01fc0df90.png)
+
+
+
+
+
+# 3. Các kỹ thuật sử dụng
+- Sử dụng các thư viện đồ hoạ SDL2
+- Xử lý va chạm giữa các đối tượng đồ hoạ
+- Lập trình hướng đối tượng (Tính đóng gói, kế thừa)
+- Xử lý mảng 1 chiều, mảng 2 chiều, vector, cấp phát động, con trỏ,...
+
+
+# 4. Kết luận
+Hiểu được cách cài đặt một số thư viện đồ hoạ, cách tạo ra, quản lý và vận hành một project.
+
+## Hướng phát triển
+- Tạo thêm nhiều level cho game
+- Phát triển các tính năng bắn đạn, tăng số lượng bóng, làm thanh trượt dài ra, tăng tốc độ bóng, tăng mạng,...
+
+## Tâm đắc
+- Hiểu và áp dụng được phương pháp "chia để trị", tách chương trình thành các file làm những nhiệm vụ riêng biệt để dễ dàng bảo trì và nâng cấp về sau.
+
+# 5. Tham khảo
+- http://lazyfoo.net/tutorials/SDL/
+- https://phattrienphanmem123az.com/
+
+- Âm thanh: https://mixkit.co/
+
+
