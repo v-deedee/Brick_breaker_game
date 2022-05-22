@@ -24,17 +24,30 @@ Thanh trượt: ![NewPaddle](https://user-images.githubusercontent.com/100273875
 ![RedBrick](https://user-images.githubusercontent.com/100273875/169706714-e1a8c249-bfe1-4d48-9148-552cf5ccbe34.png) Gạch đỏ sẽ chuyển thành gạch vàng sau một lần bóng đập.
 
 
+
+
 Menu bắt đầu
 
-![pic1](https://user-images.githubusercontent.com/100273875/169704802-cc993a7b-80e7-47b2-8f3b-73f24b9e48ab.png)
+![pic1](https://user-images.githubusercontent.com/100273875/169706989-98030d83-19e7-4fb6-8ed4-e16cddcfc711.png)
+
+
 
 Các màn chơi
-![pic2](https://user-images.githubusercontent.com/100273875/169704860-f7c7e3ea-a7a3-468b-a20d-8541e0180ea6.png)
-![pic3](https://user-images.githubusercontent.com/100273875/169704998-8ae68bf9-28bc-442d-897e-a73f95692ffb.png)
-![pic4](https://user-images.githubusercontent.com/100273875/169705399-a41b8f81-c84e-4d78-a496-ca2f9ad822c1.png)
+
+
+![pic2](https://user-images.githubusercontent.com/100273875/169706994-e22babd4-90ac-4bfa-96d6-70bf5e0c304b.png)
+![pic3](https://user-images.githubusercontent.com/100273875/169707008-67b072e5-6e4f-4d47-9f5a-eee080116327.png)
+![pic4](https://user-images.githubusercontent.com/100273875/169707016-61ad3083-7ec4-4878-acf0-ebca54226e32.png)
+
+
 
 Khi người chơi hoàn thành tất cả vòng chơi, menu chiến thắng sẽ xuất hiện
-![pic6](https://user-images.githubusercontent.com/100273875/169705435-ad82f85e-9e36-41a8-83ea-55b08b16dcb4.png)
+
+
+![pic6](https://user-images.githubusercontent.com/100273875/169707040-0bd49fc0-bfbe-465d-a4d8-e044670d50a3.png)
+
 
 Ngược lại khi người chơi mất hết 3 mạng, menu kết thúc sẽ xuất hiện
-![pic5](https://user-images.githubusercontent.com/100273875/169705471-3c6b9c0b-6dce-4e5a-b1a0-73d58cf8a870.png)
+
+
+![pic5](https://user-images.githubusercontent.com/100273875/169707024-d0e8e16a-449e-4116-88d1-9dc01fc0df90.png)
