@@ -16,7 +16,7 @@ Ball::~Ball()
 	ball_texture = NULL;
 }
 
-void Ball::set_start_positon(const int& paddle_x, const int& paddle_y, const int& paddle_width, const int& paddle_height)
+void Ball::set_start_position(const int& paddle_x, const int& paddle_y, const int& paddle_width, const int& paddle_height)
 {
 	x = paddle_x + (paddle_width - BALL_WIDTH) / 2.0;
 	y = PLAY_GROUND_HEIGHT + (SCREEN_HEIGHT - PLAY_GROUND_HEIGHT) / 2.0 - paddle_height - BALL_HEIGHT - 5;

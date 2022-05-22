@@ -20,7 +20,7 @@ public:
 	Ball();
 	~Ball();
 
-	void set_start_positon(const int& paddle_x, const int& paddle_y, const int& paddle_width, const int& paddle_height);
+	void set_start_position(const int& paddle_x, const int& paddle_y, const int& paddle_width, const int& paddle_height);
 	void load_ball_texture(SDL_Renderer* renderer);
 	void render_ball(SDL_Renderer* renderer);
 	void set_ball(SDL_Event& events, bool& is_set_start_pos);
