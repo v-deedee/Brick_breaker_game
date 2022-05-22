@@ -1,17 +1,17 @@
 # Brick_breaker_game
 Project game cuối kì: Nguyễn Việt Anh - 21020277
 # 1. Hướng dẫn cài đặt
-Tạo folder muốn cài đặt game, mở bằng Terminal (Visual Studio Code, PowerShell,...), lần lượt nhập các lệnh
+Tạo folder muốn cài đặt game, mở bằng Terminal (Visual Studio Code, PowerShell,...), lần lượt nhập các lệnh:
 
-git clone https://github.com/Nguyen-VietAnh/Brick_breaker_game.git
+`git clone https://github.com/Nguyen-VietAnh/Brick_breaker_game.git`
 
-cd .\Brick_breaker_game\
+`cd .\Brick_breaker_game\`
 
-.\Brick_game.exe
+`.\Brick_game.exe`
 
 
 # 2. Mô tả
-Trò chơi lấy ý tưởng từ game phá gạch cổ điển, người chơi điều khiển thanh trượt bằng chuột đỡ quả bóng đập qua lại để phá vỡ bức tường gạch.
+Trò chơi lấy ý tưởng từ game phá gạch cổ điển, người chơi điều khiển thanh trượt đỡ quả bóng đập qua lại để phá vỡ bức tường gạch.
 
 ## Luật chơi:
 - Khi bắt đầu mỗi màn chơi, người chơi nhấn chuột trái cho quả bóng di chuyển, sau đó di chuyển chuột để điều khiển thanh trượt qua lại trên màn hình đỡ quả bóng để phá vỡ bức tường gạch. Khi quả bóng chạm vào cạnh dưới của màn hình, người chơi sẽ mất một mạng. Khi bắt đầu người chơi sẽ có ba mạng, khi thua cả 3 mạng thì trò chơi kết thúc.
