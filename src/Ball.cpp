@@ -29,7 +29,9 @@ void Ball::load_ball_texture(SDL_Renderer* renderer)
 
 void Ball::render_ball(SDL_Renderer* renderer)
 {
-	SDL_Rect renderQuad = { x, y, BALL_WIDTH, BALL_HEIGHT };
+	int x_ = static_cast<int>(x);
+	int y_ = static_cast<int>(y);
+	SDL_Rect renderQuad = { x_, y_, BALL_WIDTH, BALL_HEIGHT };
 	SDL_RenderCopy(renderer, ball_texture, NULL, &renderQuad);
 }
 
@@ -99,10 +101,9 @@ void Ball::set_paddle_collision(const int& paddle_x, const int& paddle_y, const 
 void Ball::set_brick_collision(SDL_Renderer* renderer, const int& brick_x, const int& brick_y, const int& brick_width, const int& brick_height,
 								int& brick_matrix, int& score, Mix_Chunk* ball_impact_sound)
 {
-	double center_x = x + BALL_WIDTH / 2.0;
-	double center_y = y + BALL_HEIGHT / 2.0;
-
-	SDL_Rect ball_rect = { x, y, BALL_WIDTH, BALL_HEIGHT };
+	int x_ = floor(x) - 1;
+	int y_ = floor(y) - 1;
+	SDL_Rect ball_rect = { x_, y_, BALL_WIDTH, BALL_HEIGHT };
 	SDL_Rect brick_rect = { brick_x, brick_y, brick_width, brick_height };
 	if (SDL_HasIntersection(&ball_rect, &brick_rect))
 	{
