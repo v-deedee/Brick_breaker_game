@@ -2,6 +2,7 @@
 Project game cuối kì: Nguyễn Việt Anh - 21020277
 # 1. Hướng dẫn cài đặt
 Tạo folder muốn cài đặt game, mở bằng Terminal (Visual Studio Code, PowerShell,...), lần lượt nhập các lệnh
+
 git clone https://github.com/Nguyen-VietAnh/Brick_breaker_game.git
 cd .\Brick_breaker_game\
 .\Brick_game.exe
