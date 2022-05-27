@@ -2,18 +2,8 @@
 
 Level::Level()
 {
-	brick = new SDL_Rect*[BRICK_ROWS];
-	for (int i = 0; i < BRICK_ROWS; i++)
-	{
-		brick[i] = new SDL_Rect[BRICK_COLS];
-	}
-
-	brick_matrix = new int* [BRICK_ROWS];
-	for (int i = 0; i < BRICK_ROWS; i++)
-		brick_matrix[i] = new int[BRICK_COLS];
-
 	level_cleared = true;
-	is_first = true;
+	first_load_level = true;
 	r_brick = NULL;
 	y_brick = NULL;
 	g_brick = NULL;
@@ -21,14 +11,8 @@ Level::Level()
 
 Level::~Level()
 {
-	for (int i = 0; i < BRICK_ROWS; i++)
-		delete [] brick[i];
-	delete [] brick;
-
-	for (int i = 0; i < BRICK_ROWS; i++)
-		delete[] brick_matrix[i];
-	delete[] brick_matrix;
-
+	brick.clear();
+	brick_matrix.clear();
 	SDL_DestroyTexture(r_brick);
 	SDL_DestroyTexture(y_brick);
 	SDL_DestroyTexture(g_brick);
@@ -43,18 +27,25 @@ void Level::load_brick_texture(SDL_Renderer* renderer)
 
 void Level::set_brick_wall()
 {
+	if (brick.size() > 0) brick.clear();
 	for (int i = 0; i < BRICK_ROWS; i++)
 	{
 		for (int j = 0; j < BRICK_COLS; j++)
 		{
-			if (brick_matrix[i][j] > 0)
+			if (brick_matrix.at(i*BRICK_COLS + j) > 0)
 			{
-				brick[i][j].x = (SCREEN_WIDTH - PLAY_GROUND_WIDTH) / 2 + j * (BRICK_WIDTH + 5) + 2.5;
-				brick[i][j].y = (SCREEN_HEIGHT - PLAY_GROUND_HEIGHT) / 2 + i * (BRICK_HEIGHT + 5) + 2.5;
-				brick[i][j].w = BRICK_WIDTH;
-				brick[i][j].h = BRICK_HEIGHT;
+				SDL_Rect br;
+				br.x = (SCREEN_WIDTH - PLAY_GROUND_WIDTH) / 2 + j * (BRICK_WIDTH + 5) + 2.5;
+				br.y = (SCREEN_HEIGHT - PLAY_GROUND_HEIGHT) / 2 + i * (BRICK_HEIGHT + 5) + 2.5;
+				br.w = BRICK_WIDTH;
+				br.h = BRICK_HEIGHT;
+				brick.push_back(br);
 			}
-			else brick[i][j] = { 0, 0, 0, 0 };
+			else
+			{
+				SDL_Rect b = { 0, 0, 0, 0 };
+				brick.push_back(b);
+			}
 		}
 	}
 }
@@ -66,20 +57,20 @@ void Level::render_brick_wall(SDL_Renderer* renderer)
 	{
 		for (int j = 0; j < BRICK_COLS; j++)
 		{
-			if (brick_matrix[i][j] > 0)
+			if (brick_matrix.at(i*BRICK_COLS + j) > 0)
 			{
 				level_cleared = false;
-				if (brick_matrix[i][j] == 1)
+				if (brick_matrix.at(i*BRICK_COLS + j) == 1)
 				{
-					SDL_RenderCopy(renderer, g_brick, NULL, &brick[i][j]);
+					SDL_RenderCopy(renderer, g_brick, NULL, &brick.at(i*BRICK_COLS + j));
 				}
-				else if (brick_matrix[i][j] == 2)
+				else if (brick_matrix.at(i*BRICK_COLS + j) == 2)
 				{
-					SDL_RenderCopy(renderer, y_brick, NULL, &brick[i][j]);
+					SDL_RenderCopy(renderer, y_brick, NULL, &brick.at(i*BRICK_COLS + j));
 				}
-				else if (brick_matrix[i][j] == 3)
+				else if (brick_matrix.at(i*BRICK_COLS + j) == 3)
 				{
-					SDL_RenderCopy(renderer, r_brick, NULL, &brick[i][j]);
+					SDL_RenderCopy(renderer, r_brick, NULL, &brick.at(i*BRICK_COLS + j));
 				}
 			}
 		}
@@ -88,16 +79,26 @@ void Level::render_brick_wall(SDL_Renderer* renderer)
 
 void Level::set_up_level_1(SDL_Renderer* renderer)
 {
-	if (is_first)
+	if (first_load_level)
 	{
-		for (int i = 0; i < BRICK_ROWS; i++)
+		if (brick_matrix.size() > 0) brick_matrix.clear();
+		std::ifstream file("assets/data/level1.txt");
+		if (!file.is_open())
 		{
-			for (int j = 0; j < BRICK_COLS; j++)
+			std::cout << "Failed to load level1.txt" << std::endl;
+			exit(1);
+		}
+		else
+		{
+			while (!file.eof())
 			{
-				brick_matrix[i][j] = LEVEL_1[i][j];
+				int n;
+				file >> n;
+				brick_matrix.push_back(n);
 			}
 		}
-		is_first = false;
+		
+		first_load_level = false;
 	}
 
 	level_cleared = true;
@@ -105,42 +106,62 @@ void Level::set_up_level_1(SDL_Renderer* renderer)
 
 	render_brick_wall(renderer);
 
-	if (level_cleared) is_first = true;
+	if (level_cleared) first_load_level = true;
 }
 
 void Level::set_up_level_2(SDL_Renderer* renderer)
 {
-	if (is_first)
+	if (first_load_level)
 	{
-		for (int i = 0; i < BRICK_ROWS; i++)
+		if (brick_matrix.size() > 0) brick_matrix.clear();
+		std::ifstream file("assets/data/level2.txt");
+		if (!file.is_open())
 		{
-			for (int j = 0; j < BRICK_COLS; j++)
+			std::cout << "Failed to load level2.txt" << std::endl;
+			exit(1);
+		}
+		else
+		{
+			while (!file.eof())
 			{
-				brick_matrix[i][j] = LEVEL_2[i][j];
+				int n;
+				file >> n;
+				brick_matrix.push_back(n);
 			}
 		}
-		is_first = false;
+		
+		first_load_level = false;
 	}
 
 	set_brick_wall();
 
 	render_brick_wall(renderer);
 
-	if (level_cleared) is_first = true;
+	if (level_cleared) first_load_level = true;
 }
 
 void Level::set_up_level_3(SDL_Renderer* renderer)
 {
-	if (is_first)
+	if (first_load_level)
 	{
-		for (int i = 0; i < BRICK_ROWS; i++)
+		if (brick_matrix.size() > 0) brick_matrix.clear();
+		std::ifstream file("assets/data/level3.txt");
+		if (!file.is_open())
 		{
-			for (int j = 0; j < BRICK_COLS; j++)
+			std::cout << "Failed to load level3.txt" << std::endl;
+			exit(1);
+		}
+		else
+		{
+			while (!file.eof())
 			{
-				brick_matrix[i][j] = LEVEL_3[i][j];
+				int n;
+				file >> n;
+				brick_matrix.push_back(n);
 			}
 		}
-		is_first = false;
+		
+		first_load_level = false;
 	}
 
 	level_cleared = true;
@@ -148,21 +169,31 @@ void Level::set_up_level_3(SDL_Renderer* renderer)
 
 	render_brick_wall(renderer);
 
-	if (level_cleared) is_first = true;
+	if (level_cleared) first_load_level = true;
 }
 
 void Level::set_up_level_4(SDL_Renderer* renderer)
 {
-	if (is_first)
+	if (first_load_level)
 	{
-		for (int i = 0; i < BRICK_ROWS; i++)
+		if (brick_matrix.size() > 0) brick_matrix.clear();
+		std::ifstream file("assets/data/level4.txt");
+		if (!file.is_open())
 		{
-			for (int j = 0; j < BRICK_COLS; j++)
+			std::cout << "Failed to load level4.txt" << std::endl;
+			exit(1);
+		}
+		else
+		{
+			while (!file.eof())
 			{
-				brick_matrix[i][j] = LEVEL_4[i][j];
+				int n;
+				file >> n;
+				brick_matrix.push_back(n);
 			}
 		}
-		is_first = false;
+		
+		first_load_level = false;
 	}
 
 	level_cleared = true;
@@ -170,5 +201,5 @@ void Level::set_up_level_4(SDL_Renderer* renderer)
 
 	render_brick_wall(renderer);
 
-	//if (level_cleared) is_first = true;
+	//if (level_cleared) first_load_level = true;
 }

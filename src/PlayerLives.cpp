@@ -28,9 +28,14 @@ void PlayerLives::render(SDL_Renderer* renderer)
 	}
 }
 
-void PlayerLives::init(SDL_Renderer* renderer)
+void PlayerLives::load(SDL_Renderer* renderer)
 {
 	load_texture(renderer, LIVES_IMAGE_FILE, lives_texture);
+}
+
+void PlayerLives::init()
+{
+	
 	number = 3;
 	if (pos_list.size() > 0)
 	{
@@ -41,6 +46,7 @@ void PlayerLives::init(SDL_Renderer* renderer)
 	add_pos(370);
 	add_pos(340);
 }
+
 
 void PlayerLives::decrease()
 {

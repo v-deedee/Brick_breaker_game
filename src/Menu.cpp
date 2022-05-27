@@ -21,17 +21,23 @@ Menu::Menu()
 	is_restart = false;
 }
 
+void Menu::free()
+{
+	if (background_texture != NULL) SDL_DestroyTexture(background_texture);
+	if (play_up != NULL) SDL_DestroyTexture(play_up);
+	if (play_down != NULL) SDL_DestroyTexture(play_down);
+	if (exit_up != NULL) SDL_DestroyTexture(exit_up);
+	if (exit_down != NULL) SDL_DestroyTexture(exit_down);
+	if (game_over_texture != NULL) SDL_DestroyTexture(game_over_texture);
+	if (main_menu_up != NULL) SDL_DestroyTexture(main_menu_up);
+	if (main_menu_down != NULL) SDL_DestroyTexture(main_menu_down);
+	if (win_game_texture != NULL) SDL_DestroyTexture(win_game_texture);
+}
+
 Menu::~Menu()
 {
-	SDL_DestroyTexture(background_texture);
-	SDL_DestroyTexture(play_up);
-	SDL_DestroyTexture(play_down);
-	SDL_DestroyTexture(exit_up);
-	SDL_DestroyTexture(exit_down);
-	SDL_DestroyTexture(game_over_texture);
-	SDL_DestroyTexture(main_menu_up);
-	SDL_DestroyTexture(main_menu_down);
-	SDL_DestroyTexture(win_game_texture);
+	std::cout << "Menu destructor call" << std::endl;
+	free();
 }
 
 void Menu::load_menu_texture(SDL_Renderer* renderer)
@@ -44,7 +50,7 @@ void Menu::load_menu_texture(SDL_Renderer* renderer)
 	load_texture(renderer, "assets/sprites/Game_over.png", game_over_texture);
 	load_texture(renderer, "assets/sprites/Main_menu_up.png", main_menu_up);
 	load_texture(renderer, "assets/sprites/Main_menu_down.png", main_menu_down);
-	load_texture(renderer, "assets/sprites/Victory_backgrond.png", win_game_texture);
+	load_texture(renderer, "assets/sprites/Victory_background.png", win_game_texture);
 }
 
 void Menu::get_mouse_state(SDL_Event* event, mouse_states &state, int button_x, int button_y, mouse_states in, mouse_states out, mouse_states down)
@@ -110,11 +116,11 @@ void Menu::handle_over_event(SDL_Event* events)
 
 void Menu::render_main_menu(SDL_Renderer* renderer)
 {
-	SDL_Rect background_rect = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
+	SDL_Rect main_menu_rect = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
 	SDL_Rect play_button_rect = { BUTTON_X, PLAY_BUTTON_Y, BUTTON_WIDTH, BUTTON_HEIGHT };
 	SDL_Rect exit_button_rect = { BUTTON_X, EXIT_BUTTON_Y, BUTTON_WIDTH, BUTTON_HEIGHT };
 
-	SDL_RenderCopy(renderer, background_texture, NULL, &background_rect);
+	SDL_RenderCopy(renderer, background_texture, NULL, &main_menu_rect);
 	SDL_RenderCopy(renderer, play_up, NULL, &play_button_rect);
 	SDL_RenderCopy(renderer, exit_up, NULL, &exit_button_rect);
 	

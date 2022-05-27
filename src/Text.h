@@ -8,7 +8,7 @@
 class Text : public CommonFunc
 {
 public:
-	const std::string FONT_FILE = "assets/font/VeraMoBd.ttf";
+	const std::string FONT_FILE = "assets/font/Brick.ttf";
 
 	Text();
 	~Text();

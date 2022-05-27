@@ -19,7 +19,8 @@ public:
 	void set_number(const int& num) { number = num; };
 	void add_pos(const int& xpos);
 	void render(SDL_Renderer* renderer);
-	void init(SDL_Renderer* renderer);
+	void init();
+	void load(SDL_Renderer* renderer);
 	void decrease();
 
 private:

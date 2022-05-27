@@ -8,12 +8,13 @@ enum class mouse_states
 	MAIN_MENU_IN, MAIN_MENU_OUT, MAIN_MENU_DOWN
 };
 
+
+
 class Menu : public CommonFunc
 {
 public:
 	const int BUTTON_WIDTH = 150;
 	const int BUTTON_HEIGHT = 75;
-
 	const int BUTTON_X = (SCREEN_WIDTH - BUTTON_WIDTH) / 2;
 
 	const int PLAY_BUTTON_Y = 450;
@@ -30,6 +31,7 @@ public:
 	void render_main_menu(SDL_Renderer* renderer);
 	void render_game_over_menu(SDL_Renderer* renderer);
 	void render_win_game_menu(SDL_Renderer* renderer);
+	void free();
 
 	bool get_is_exit() { return is_exit; };
 	bool get_is_play() { return is_play; };

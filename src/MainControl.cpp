@@ -65,6 +65,9 @@ void MainControl::initializeSDL()
 
 void MainControl::update_game(bool &is_set_start_pos, bool &lose_lives_check, int &die_number, bool &is_running, const std::string& l_text, const int& score, bool& game_over)
 {
+	level_text->free();
+	score_text->free();
+
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 	SDL_RenderClear(renderer);
 
@@ -93,7 +96,7 @@ void MainControl::update_game(bool &is_set_start_pos, bool &lose_lives_check, in
 
 	if (is_set_start_pos)
 	{
-		ball->set_start_positon(paddle->getX(), paddle->getY(), paddle->PADDLE_WIDTH, paddle->PADDLE_HEIGHT);
+		ball->set_start_position(paddle->getX(), paddle->getY(), paddle->PADDLE_WIDTH, paddle->PADDLE_HEIGHT);
 	}
 
 	ball->move(is_set_start_pos, lose_lives_check, ball_impact_sound[0]);
@@ -113,6 +116,8 @@ void MainControl::update_game(bool &is_set_start_pos, bool &lose_lives_check, in
 	}
 
 	ball->set_paddle_collision(paddle->getX(), paddle->getY(), paddle->PADDLE_WIDTH, paddle->PADDLE_HEIGHT, is_set_start_pos, ball_impact_sound[0]);
+
+	
 }
 
 void MainControl::check_collision(int& score)
@@ -136,7 +141,7 @@ void MainControl::load_game()
 {
 	ball->load_ball_texture(renderer);
 	paddle->load_paddle_texture(renderer);
-	player_lives->init(renderer);
+	player_lives->load(renderer);
 	ball_impact_sound[0] = Mix_LoadWAV("assets/audio/Ball_hit_paddle.wav");
 	ball_impact_sound[1] = Mix_LoadWAV("assets/audio/Ball_hit_brick.wav");
 	if (ball_impact_sound[0] == NULL || ball_impact_sound[1] == NULL)
@@ -145,10 +150,12 @@ void MainControl::load_game()
 	}
 	level->load_brick_texture(renderer);
 	menu->load_menu_texture(renderer);
+	//paddle->set_bullet(renderer);
 }
 
 void MainControl::set_main_menu(bool& is_running, SDL_Event* events, bool& is_exit)
 {
+	
 	while (is_running)
 	{
 		while (SDL_PollEvent(events) != 0)
@@ -177,6 +184,7 @@ void MainControl::set_main_menu(bool& is_running, SDL_Event* events, bool& is_ex
 
 void MainControl::set_game_over_menu(bool& is_running, SDL_Event* events, bool& is_restart, bool& is_exit, const int& score)
 {
+	
 	while (is_running)
 	{
 		while (SDL_PollEvent(events) != 0)
@@ -208,13 +216,16 @@ void MainControl::set_game_over_menu(bool& is_running, SDL_Event* events, bool& 
 		score_text->render(100, 350, renderer);
 		
 		SDL_RenderPresent(renderer);
+		score_text->free();
 	}
 }
 
 void MainControl::set_win_game_menu(bool& is_running, SDL_Event* events, bool& is_restart, bool& is_exit, const int& score)
 {
+	
 	while (is_running)
 	{
+		
 		while (SDL_PollEvent(events) != 0)
 		{
 			if (events->type == SDL_QUIT)
@@ -235,6 +246,7 @@ void MainControl::set_win_game_menu(bool& is_running, SDL_Event* events, bool& i
 			is_restart = true;
 			break;
 		}
+		
 
 		std::string sc_text = "YOUR SCORE:";
 		std::string sc_value = std::to_string(score);
@@ -244,34 +256,48 @@ void MainControl::set_win_game_menu(bool& is_running, SDL_Event* events, bool& i
 		score_text->render(100, 350, renderer);
 
 		SDL_RenderPresent(renderer);
+		score_text->free();
 	}
 }
+
+bool first_load_game = true;
 
 void MainControl::run()
 {
 	bool is_running = true;
-	//SDL_Event event1, event2, event3, event4;
 	SDL_Event events;
+
 	bool is_set_start_pos = true;
 	bool level_over[4] = { 0, 0, 0, 0 };
+
 	int score = 0;
+
 	int die_number = 0;
 	bool lose_lives_check = false;
-	bool is_first = true;
+
+	bool first_load_level = true;
+	
 	bool is_restart = true;
 	bool game_over = false;
 	bool is_exit = false;
 	bool win_game = false;
 
-	load_game();
+	player_lives->init();
+
+	if (first_load_game)
+	{
+		load_game();
+		first_load_game = false;
+	}
 
 	if (is_restart)
 	{
 		menu->set_is_play(false);
 		menu->set_is_exit(false);
 		menu->set_is_start(false);
-		level->set_is_first(true);
 		menu->set_play_state(mouse_states::PLAY_BUTTON_OUT);
+
+		level->set_first_load_level(true);
 
 		set_main_menu(is_running, &events, is_exit);
 		is_restart = false;
@@ -289,7 +315,7 @@ void MainControl::run()
 			}
 			ball->set_ball(events, is_set_start_pos);
 		}
-
+		paddle->handle_gun_event(renderer);
 		// lEVEL 1
 		if (!level_over[0])
 		{
@@ -305,11 +331,11 @@ void MainControl::run()
 		{
 			level_over[0] = true;
 
-			if (is_first)
+			if (first_load_level)
 			{
 				is_set_start_pos = true;
 				ball->set_button_event(true);
-				is_first = false;
+				first_load_level = false;
 			}
 
 			update_game(is_set_start_pos, lose_lives_check, die_number, is_running, "LEVEL 2", score, game_over);
@@ -320,7 +346,7 @@ void MainControl::run()
 			if (level->get_level_cleared())
 			{
 				level_over[1] = true;
-				is_first = true;
+				first_load_level = true;
 			}
 		}
 
@@ -329,11 +355,11 @@ void MainControl::run()
 		{
 			level_over[1] = true;
 
-			if (is_first)
+			if (first_load_level)
 			{
 				is_set_start_pos = true;
 				ball->set_button_event(true);
-				is_first = false;
+				first_load_level = false;
 			}
 
 			update_game(is_set_start_pos, lose_lives_check, die_number, is_running, "LEVEL 3", score, game_over);
@@ -344,7 +370,7 @@ void MainControl::run()
 			if (level->get_level_cleared())
 			{
 				level_over[2] = true;
-				is_first = true;
+				first_load_level = true;
 			}
 		}
 
@@ -353,11 +379,11 @@ void MainControl::run()
 		{
 			level_over[2] = true;
 
-			if (is_first)
+			if (first_load_level)
 			{
 				is_set_start_pos = true;
 				ball->set_button_event(true);
-				is_first = false;
+				first_load_level = false;
 			}
 
 			update_game(is_set_start_pos, lose_lives_check, die_number, is_running, "LEVEL 4", score, game_over);
