@@ -59,7 +59,8 @@ Thanh trượt: ![NewPaddle](https://user-images.githubusercontent.com/100273875
 
 Menu bắt đầu:
 
-![Main_menu](https://user-images.githubusercontent.com/100273875/171681879-07b9760a-d42d-4580-acab-d401fc37c631.png)
+![Main_menu](https://user-images.githubusercontent.com/100273875/171682490-ab575866-8dce-49fc-b0f6-c89397cd332f.png)
+
 
 
 
@@ -73,22 +74,28 @@ Game play:
 Các màn chơi
 
 
-![pic2](https://user-images.githubusercontent.com/100273875/169706994-e22babd4-90ac-4bfa-96d6-70bf5e0c304b.png)
-![pic3](https://user-images.githubusercontent.com/100273875/169707008-67b072e5-6e4f-4d47-9f5a-eee080116327.png)
-![pic4](https://user-images.githubusercontent.com/100273875/169707016-61ad3083-7ec4-4878-acf0-ebca54226e32.png)
+![level3](https://user-images.githubusercontent.com/100273875/171684796-35102e20-295c-463e-bb6b-ec1c3d4218e6.png)
+![level4](https://user-images.githubusercontent.com/100273875/171684873-3391ec43-a877-4724-b90f-a92ba62c5001.png)
+![level5](https://user-images.githubusercontent.com/100273875/171684883-e4f53e4c-3c7f-4545-96a4-1615548f3fe2.png)
+![level6 1](https://user-images.githubusercontent.com/100273875/171684897-874cbefa-be28-44af-ba27-1a0082972a6b.png)
+![level7](https://user-images.githubusercontent.com/100273875/171684905-6ecf08b1-dce7-48e1-ba05-7fdf5f2f91ab.png)
+![level8](https://user-images.githubusercontent.com/100273875/171684920-982adec7-2b55-42a8-a49a-c741280e9857.png)
+
 
 
 
 Khi người chơi hoàn thành tất cả vòng chơi, menu chiến thắng sẽ xuất hiện
 
 
-![pic6](https://user-images.githubusercontent.com/100273875/169707040-0bd49fc0-bfbe-465d-a4d8-e044670d50a3.png)
+![win_game](https://user-images.githubusercontent.com/100273875/171684956-2a9e2321-f376-44eb-93a0-0ee770662e5f.png)
+
 
 
 Ngược lại khi người chơi mất hết 3 mạng, menu kết thúc sẽ xuất hiện
 
 
-![pic5](https://user-images.githubusercontent.com/100273875/169707024-d0e8e16a-449e-4116-88d1-9dc01fc0df90.png)
+![game_over](https://user-images.githubusercontent.com/100273875/171685006-85cc249e-479b-46bd-a5d3-0a9230485f45.png)
+
 
 
 
