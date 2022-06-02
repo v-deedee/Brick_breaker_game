@@ -13,12 +13,14 @@ Tạo folder muốn cài đặt game, mở bằng Terminal (Visual Studio Code, 
 # 2. Mô tả
 Trò chơi lấy ý tưởng từ game phá gạch cổ điển, người chơi điều khiển thanh trượt đỡ quả bóng đập qua lại để phá vỡ bức tường gạch.
 
+- Video demo: https://youtu.be/PmVA2-DIvhI
+
 ## Luật chơi:
 - Khi bắt đầu mỗi màn chơi, người chơi nhấn chuột trái cho quả bóng di chuyển, sau đó di chuyển chuột để điều khiển thanh trượt qua lại trên màn hình đỡ quả bóng để phá vỡ bức tường gạch. Khi quả bóng chạm vào cạnh dưới của màn hình, người chơi sẽ mất một mạng. Khi bắt đầu người chơi sẽ có ba mạng, khi thua cả 3 mạng thì trò chơi kết thúc.
 
 Thanh trượt: ![NewPaddle](https://user-images.githubusercontent.com/100273875/169706560-d7652358-7160-48d3-af20-2f0379f450e5.png)
 
-- Có 3 loại gạch người chơi sẽ gặp:
+- Có 4 loại gạch người chơi sẽ gặp:
 
 ![GreenBrick](https://user-images.githubusercontent.com/100273875/169706667-e1d33d24-b667-4a98-a1dd-e25ee2c5c48d.png) Gạch xanh lá sẽ biến mất sau một lần bóng đập.
 
@@ -27,6 +29,9 @@ Thanh trượt: ![NewPaddle](https://user-images.githubusercontent.com/100273875
 
 
 ![RedBrick](https://user-images.githubusercontent.com/100273875/169706714-e1a8c249-bfe1-4d48-9148-552cf5ccbe34.png) Gạch đỏ sẽ chuyển thành gạch vàng sau một lần bóng đập.
+
+
+![PlatinumBrick](https://user-images.githubusercontent.com/100273875/171679480-d0db95c2-9d03-4520-b7dd-b0b6714e5e7e.png) Gạch xám không thể bị phá vỡ
 
 
 
