@@ -57,9 +57,16 @@ Thanh trượt: ![NewPaddle](https://user-images.githubusercontent.com/100273875
 
 ## Minh hoạ
 
-Menu bắt đầu
+Menu bắt đầu:
 
-![pic1](https://user-images.githubusercontent.com/100273875/169706989-98030d83-19e7-4fb6-8ed4-e16cddcfc711.png)
+![Main_menu](https://user-images.githubusercontent.com/100273875/171681879-07b9760a-d42d-4580-acab-d401fc37c631.png)
+
+
+
+Game play:
+
+![Main_play](https://user-images.githubusercontent.com/100273875/171682012-61e617c4-833b-4609-a4c8-e3a99b6d416d.png)
+
 
 
 
