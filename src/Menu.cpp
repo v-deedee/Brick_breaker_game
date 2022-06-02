@@ -36,7 +36,6 @@ void Menu::free()
 
 Menu::~Menu()
 {
-	std::cout << "Menu destructor call" << std::endl;
 	free();
 }
 
