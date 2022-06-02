@@ -803,7 +803,7 @@ void MainControl::run()
 				first_load_level = false;
 			}
 
-			update_game(is_set_start_pos, lose_lives_check, die_number, is_running, "LEVEL 4", game_over,
+			update_game(is_set_start_pos, lose_lives_check, die_number, is_running, "LEVEL 8", game_over,
 						items_appearing, score, destroyed_bricks, item_index);
 
 			level->set_up_level_8(renderer);
@@ -866,6 +866,16 @@ void MainControl::run()
 		set_win_game_menu(is_running, &events, is_restart, is_exit, score);
 		main_ball->set_button_event(true);
 		paddle->free_bullet_list();
+		if (score > high_score)
+		{
+			high_score = score;
+			std::ofstream outfile("assets/data/high_score.txt");
+			if(outfile.is_open())
+			{
+				outfile << high_score;
+			}
+			outfile.close();
+		}
 
 		if (is_restart) run();
 		return;
