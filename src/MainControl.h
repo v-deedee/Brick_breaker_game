@@ -33,6 +33,7 @@ public:
 	void handle_multi_ball_event(bool &is_set_start_pos, bool& lose_lives_check, const bool& is_activated, int& score, int& destroyed_bricks);
 	void set_up_multi_ball_event();
 	void stop_multi_ball_event();
+	void set_time(const Uint32& current_time, Uint32& base_time, bool& is_set_start_pos);
 	void run();
 	void close();
 
@@ -51,6 +52,7 @@ private:
 	Mix_Chunk* win_game_sound;
 	Text* level_text;
 	Text* score_text;
+	Text* time_text;
 	Menu* menu;
 	GunItems* gun_items;
 	MultiItems* multi_items;

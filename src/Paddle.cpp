@@ -118,7 +118,7 @@ void Paddle::set_brick_collision(const int& brick_x, const int& brick_y, const i
 		{
 			if (brick_matrix < 4.0) brick_matrix -= 0.25;
 			else if (brick_matrix == 4.0) left_bullet_list.at(i).set_is_move(false);
-			if (ceil(brick_matrix) == floor(brick_matrix))
+			if (ceil(brick_matrix) == floor(brick_matrix) && brick_matrix < 4.0)
 			{
 				score += 50;
 			}
@@ -136,7 +136,7 @@ void Paddle::set_brick_collision(const int& brick_x, const int& brick_y, const i
 		{
 			if (brick_matrix < 4.0) brick_matrix -= 0.25;
 			else if (brick_matrix == 4.0) right_bullet_list.at(i).set_is_move(false);
-			if (ceil(brick_matrix) == floor(brick_matrix))
+			if (ceil(brick_matrix) == floor(brick_matrix) && brick_matrix < 4.0)
 			{
 				score += 50;
 			}

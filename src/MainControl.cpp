@@ -17,6 +17,7 @@ MainControl::MainControl()
 	win_game_sound = NULL;
 	level_text = new Text();
 	score_text = new Text();
+	time_text = new Text();
 	menu = new Menu();
 	gun_items = new GunItems();
 	multi_items = new MultiItems();
@@ -397,6 +398,7 @@ void MainControl::run()
 
 	int item_index;
 
+	Uint32 base_time = 0;
 	Uint32 time1 = 0;
 	Uint32 time2 = 0;
 	Uint32 time3 = 0;
@@ -416,7 +418,7 @@ void MainControl::run()
 
 	if (is_restart)
 	{
-		
+		base_time = SDL_GetTicks()/1000;
 		menu->set_is_play(false);
 		menu->set_is_exit(false);
 		menu->set_is_start(false);
@@ -444,6 +446,7 @@ void MainControl::run()
 		// LEVEL 1
 		if (!level_over[0])
 		{
+			time1 = SDL_GetTicks()/1000;
 			
 
 			if (first_set_gun)
@@ -465,6 +468,7 @@ void MainControl::run()
 			}
 			update_game(is_set_start_pos, lose_lives_check, die_number, is_running, "LEVEL 1", game_over,
 						items_appearing, score, destroyed_bricks, item_index);
+			set_time(time1, base_time, is_set_start_pos);
 
 			level->set_up_level_1(renderer);
 			check_collision(main_ball ,score, destroyed_bricks);
@@ -486,7 +490,6 @@ void MainControl::run()
 				level_over[0] = true;
 				paddle->free_bullet_list();
 				stop_multi_ball_event();
-				time1 = SDL_GetTicks()/1000;
 				SDL_Delay(100);
 			}
 		}
@@ -494,7 +497,7 @@ void MainControl::run()
 		// LEVEL2
 		if (level_over[0] && !level_over[1])
 		{
-			
+			time2 = SDL_GetTicks()/1000;
 
 			level_over[0] = true;
 
@@ -520,6 +523,7 @@ void MainControl::run()
 
 			update_game(is_set_start_pos, lose_lives_check, die_number, is_running, "LEVEL 2", game_over,
 						items_appearing, score, destroyed_bricks, item_index);
+			set_time(time2, time1, is_set_start_pos);
 
 			level->set_up_level_2(renderer);
 			check_collision(main_ball ,score, destroyed_bricks);
@@ -542,7 +546,6 @@ void MainControl::run()
 				first_load_level = true;
 				paddle->free_bullet_list();
 				stop_multi_ball_event();
-				time2 = SDL_GetTicks()/1000;
 				SDL_Delay(100);
 			}
 		}
@@ -550,7 +553,7 @@ void MainControl::run()
 		// LEVEL 3
 		if (level_over[1] && !level_over[2])
 		{
-			
+			time3 = SDL_GetTicks()/1000;
 			level_over[1] = true;
 
 			if (first_load_level)
@@ -575,6 +578,7 @@ void MainControl::run()
 
 			update_game(is_set_start_pos, lose_lives_check, die_number, is_running, "LEVEL 3", game_over,
 						items_appearing, score, destroyed_bricks, item_index);
+			set_time(time3, time2, is_set_start_pos);
 
 			level->set_up_level_3(renderer);
 			check_collision(main_ball ,score, destroyed_bricks);
@@ -597,7 +601,6 @@ void MainControl::run()
 				first_load_level = true;
 				paddle->free_bullet_list();
 				stop_multi_ball_event();
-				time3 = SDL_GetTicks()/1000;
 				SDL_Delay(100);
 			}
 		}
@@ -605,7 +608,7 @@ void MainControl::run()
 		// LEVEL 4
 		if (level_over[2] && !level_over[3])
 		{
-			
+			time4 = SDL_GetTicks()/1000;
 			level_over[2] = true;
 
 			if (first_load_level)
@@ -630,6 +633,7 @@ void MainControl::run()
 
 			update_game(is_set_start_pos, lose_lives_check, die_number, is_running, "LEVEL 4", game_over,
 						items_appearing, score, destroyed_bricks, item_index);
+			set_time(time4, time3, is_set_start_pos);
 
 			level->set_up_level_4(renderer);
 			check_collision(main_ball, score, destroyed_bricks);
@@ -652,7 +656,6 @@ void MainControl::run()
 				first_load_level = true;
 				paddle->free_bullet_list();
 				stop_multi_ball_event();
-				time4 = SDL_GetTicks()/1000;
 				SDL_Delay(100);
 			}
 		}
@@ -661,13 +664,7 @@ void MainControl::run()
 		if (level_over[3] && !level_over[4])
 		{
 			time5 = SDL_GetTicks()/1000;
-			if (time5 - time4 > 150)
-			{
-				is_set_start_pos = true;
-				main_ball->set_button_event(true);
-				time4 = time5;
-			}
-
+			
 			level_over[3] = true;
 
 			if (first_load_level)
@@ -692,6 +689,7 @@ void MainControl::run()
 
 			update_game(is_set_start_pos, lose_lives_check, die_number, is_running, "LEVEL 5", game_over,
 						items_appearing, score, destroyed_bricks, item_index);
+			set_time(time5, time4, is_set_start_pos);
 
 			level->set_up_level_5(renderer);
 			check_collision(main_ball, score, destroyed_bricks);
@@ -722,12 +720,6 @@ void MainControl::run()
 		if (level_over[4] && !level_over[5])
 		{
 			time6 = SDL_GetTicks()/1000;
-			if (time6 - time5 > 150)
-			{
-				is_set_start_pos = true;
-				main_ball->set_button_event(true);
-				time5 = time6;
-			}
 
 			level_over[4] = true;
 
@@ -753,6 +745,7 @@ void MainControl::run()
 
 			update_game(is_set_start_pos, lose_lives_check, die_number, is_running, "LEVEL 6", game_over,
 						items_appearing, score, destroyed_bricks, item_index);
+			set_time(time6, time5, is_set_start_pos);
 
 			level->set_up_level_6(renderer);
 			check_collision(main_ball, score, destroyed_bricks);
@@ -783,12 +776,6 @@ void MainControl::run()
 		if (level_over[5] && !level_over[6])
 		{
 			time7 = SDL_GetTicks()/1000;
-			if (time7 - time6 > 150)
-			{
-				is_set_start_pos = true;
-				main_ball->set_button_event(true);
-				time6 = time7;
-			}
 
 			level_over[5] = true;
 
@@ -814,6 +801,7 @@ void MainControl::run()
 
 			update_game(is_set_start_pos, lose_lives_check, die_number, is_running, "LEVEL 7", game_over,
 						items_appearing, score, destroyed_bricks, item_index);
+			set_time(time7, time6, is_set_start_pos);
 
 			level->set_up_level_7(renderer);
 			check_collision(main_ball, score, destroyed_bricks);
@@ -844,12 +832,6 @@ void MainControl::run()
 		if (level_over[6] && !level_over[7])
 		{
 			time8 = SDL_GetTicks()/1000;
-			if (time8 - time7 > 150)
-			{
-				is_set_start_pos = true;
-				main_ball->set_button_event(true);
-				time7 = time8;
-			}
 
 			level_over[6] = true;
 
@@ -875,11 +857,12 @@ void MainControl::run()
 
 			update_game(is_set_start_pos, lose_lives_check, die_number, is_running, "LEVEL 8", game_over,
 						items_appearing, score, destroyed_bricks, item_index);
+			set_time(time8, time7, is_set_start_pos);
 
 			level->set_up_level_8(renderer);
 			check_collision(main_ball, score, destroyed_bricks);
 
-			if (destroyed_bricks >= 4)
+			if (destroyed_bricks >= 3)
 			{
 				items_appearing = true;
 				item_index = rand() % 5 + 1;
@@ -972,6 +955,7 @@ void MainControl::close()
 
 	delete level_text;
 	delete score_text;
+	delete time_text;
 	delete menu;
 	delete gun_items;
 	delete multi_items;
@@ -1035,5 +1019,22 @@ void MainControl::stop_multi_ball_event()
 	for (int i = 0; i < 3; i++)
 	{
 		event_balls[i].free();
+	}
+}
+
+void MainControl::set_time(const Uint32& current_time, Uint32& base_time, bool& is_set_start_pos)
+{
+	time_text->free();
+	std::string t_text = "TIME:";
+	std::string t_value = std::to_string(180 - (current_time - base_time));
+	t_text += t_value;
+	time_text->set_up_text(t_text, 25, BLUE_COLOR);
+	time_text->load_font(renderer);
+	time_text->render(300, 10, renderer);
+	if (current_time - base_time > 180)
+	{
+		is_set_start_pos = true;
+		main_ball->set_button_event(true);
+		base_time = current_time;
 	}
 }
