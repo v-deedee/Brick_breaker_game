@@ -111,10 +111,12 @@ void MainControl::update_game(bool &is_set_start_pos, bool &lose_lives_check, in
 
 	if (!multi_items->get_is_activated())
 	{
+		bool val = speed_up_items->get_is_activated();
 		main_ball->render_ball(renderer);
-		main_ball->move(is_set_start_pos, lose_lives_check, ball_impact_sound[0], speed_up_items->get_is_activated());
+		main_ball->move(is_set_start_pos, lose_lives_check, ball_impact_sound[0], val);
 		main_ball->handle_paddle_collision(paddle->getX(), paddle->getY(), paddle->PADDLE_WIDTH, paddle->PADDLE_HEIGHT,
 											is_set_start_pos, ball_impact_sound[0]);
+		speed_up_items->set_is_activated(val);
 	}
 
 	if (lose_lives_check)
@@ -395,6 +397,15 @@ void MainControl::run()
 
 	int item_index;
 
+	Uint32 time1 = 0;
+	Uint32 time2 = 0;
+	Uint32 time3 = 0;
+	Uint32 time4 = 0;
+	Uint32 time5 = 0;
+	Uint32 time6 = 0;
+	Uint32 time7 = 0;
+	Uint32 time8 = 0;
+
 	player_lives->init();
 
 	if (first_load_game)
@@ -433,6 +444,8 @@ void MainControl::run()
 		// LEVEL 1
 		if (!level_over[0])
 		{
+			
+
 			if (first_set_gun)
 			{
 				main_ball->load_ball_texture(renderer);
@@ -445,6 +458,9 @@ void MainControl::run()
 				short_items->set_as_default();
 				speed_up_items->set_as_default();
 				items_appearing = false;
+				destroyed_bricks = 0;
+				item_index = 0;
+
 				first_set_gun = false;
 			}
 			update_game(is_set_start_pos, lose_lives_check, die_number, is_running, "LEVEL 1", game_over,
@@ -470,6 +486,7 @@ void MainControl::run()
 				level_over[0] = true;
 				paddle->free_bullet_list();
 				stop_multi_ball_event();
+				time1 = SDL_GetTicks()/1000;
 				SDL_Delay(100);
 			}
 		}
@@ -477,6 +494,8 @@ void MainControl::run()
 		// LEVEL2
 		if (level_over[0] && !level_over[1])
 		{
+			
+
 			level_over[0] = true;
 
 			if (first_load_level)
@@ -493,6 +512,8 @@ void MainControl::run()
 				short_items->set_as_default();
 				speed_up_items->set_as_default();
 				items_appearing = false;
+				destroyed_bricks = 0;
+				item_index = 0;
 
 				first_load_level = false;
 			}
@@ -521,6 +542,7 @@ void MainControl::run()
 				first_load_level = true;
 				paddle->free_bullet_list();
 				stop_multi_ball_event();
+				time2 = SDL_GetTicks()/1000;
 				SDL_Delay(100);
 			}
 		}
@@ -528,6 +550,7 @@ void MainControl::run()
 		// LEVEL 3
 		if (level_over[1] && !level_over[2])
 		{
+			
 			level_over[1] = true;
 
 			if (first_load_level)
@@ -544,6 +567,8 @@ void MainControl::run()
 				short_items->set_as_default();
 				speed_up_items->set_as_default();
 				items_appearing = false;
+				destroyed_bricks = 0;
+				item_index = 0;
 
 				first_load_level = false;
 			}
@@ -572,6 +597,7 @@ void MainControl::run()
 				first_load_level = true;
 				paddle->free_bullet_list();
 				stop_multi_ball_event();
+				time3 = SDL_GetTicks()/1000;
 				SDL_Delay(100);
 			}
 		}
@@ -579,6 +605,7 @@ void MainControl::run()
 		// LEVEL 4
 		if (level_over[2] && !level_over[3])
 		{
+			
 			level_over[2] = true;
 
 			if (first_load_level)
@@ -595,6 +622,8 @@ void MainControl::run()
 				short_items->set_as_default();
 				speed_up_items->set_as_default();
 				items_appearing = false;
+				destroyed_bricks = 0;
+				item_index = 0;
 				
 				first_load_level = false;
 			}
@@ -623,6 +652,7 @@ void MainControl::run()
 				first_load_level = true;
 				paddle->free_bullet_list();
 				stop_multi_ball_event();
+				time4 = SDL_GetTicks()/1000;
 				SDL_Delay(100);
 			}
 		}
@@ -630,6 +660,14 @@ void MainControl::run()
 		// LEVEL 5
 		if (level_over[3] && !level_over[4])
 		{
+			time5 = SDL_GetTicks()/1000;
+			if (time5 - time4 > 150)
+			{
+				is_set_start_pos = true;
+				main_ball->set_button_event(true);
+				time4 = time5;
+			}
+
 			level_over[3] = true;
 
 			if (first_load_level)
@@ -646,6 +684,8 @@ void MainControl::run()
 				short_items->set_as_default();
 				speed_up_items->set_as_default();
 				items_appearing = false;
+				destroyed_bricks = 0;
+				item_index = 0;
 				
 				first_load_level = false;
 			}
@@ -656,7 +696,7 @@ void MainControl::run()
 			level->set_up_level_5(renderer);
 			check_collision(main_ball, score, destroyed_bricks);
 
-			if (destroyed_bricks >= 3)
+			if (destroyed_bricks >= 2)
 			{
 				items_appearing = true;
 				item_index = rand() % 5 + 1;
@@ -681,6 +721,14 @@ void MainControl::run()
 		// LEVEL 6
 		if (level_over[4] && !level_over[5])
 		{
+			time6 = SDL_GetTicks()/1000;
+			if (time6 - time5 > 150)
+			{
+				is_set_start_pos = true;
+				main_ball->set_button_event(true);
+				time5 = time6;
+			}
+
 			level_over[4] = true;
 
 			if (first_load_level)
@@ -697,6 +745,8 @@ void MainControl::run()
 				short_items->set_as_default();
 				speed_up_items->set_as_default();
 				items_appearing = false;
+				destroyed_bricks = 0;
+				item_index = 0;
 				
 				first_load_level = false;
 			}
@@ -732,6 +782,14 @@ void MainControl::run()
 		// LEVEL 7
 		if (level_over[5] && !level_over[6])
 		{
+			time7 = SDL_GetTicks()/1000;
+			if (time7 - time6 > 150)
+			{
+				is_set_start_pos = true;
+				main_ball->set_button_event(true);
+				time6 = time7;
+			}
+
 			level_over[5] = true;
 
 			if (first_load_level)
@@ -748,6 +806,8 @@ void MainControl::run()
 				short_items->set_as_default();
 				speed_up_items->set_as_default();
 				items_appearing = false;
+				destroyed_bricks = 0;
+				item_index = 0;
 				
 				first_load_level = false;
 			}
@@ -783,6 +843,14 @@ void MainControl::run()
 		// LEVEL 8
 		if (level_over[6] && !level_over[7])
 		{
+			time8 = SDL_GetTicks()/1000;
+			if (time8 - time7 > 150)
+			{
+				is_set_start_pos = true;
+				main_ball->set_button_event(true);
+				time7 = time8;
+			}
+
 			level_over[6] = true;
 
 			if (first_load_level)
@@ -799,6 +867,8 @@ void MainControl::run()
 				short_items->set_as_default();
 				speed_up_items->set_as_default();
 				items_appearing = false;
+				destroyed_bricks = 0;
+				item_index = 0;
 				
 				first_load_level = false;
 			}

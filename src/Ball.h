@@ -26,7 +26,7 @@ public:
 	void load_ball_texture(SDL_Renderer* renderer);
 	void render_ball(SDL_Renderer* renderer);
 	void set_ball(SDL_Event& events, bool& is_set_start_pos);
-	void move(bool &is_set_start_pos, bool &lose_lives_check, Mix_Chunk* ball_impact_sound, const bool& is_activated);
+	void move(bool &is_set_start_pos, bool &lose_lives_check, Mix_Chunk* ball_impact_sound, bool& is_activated);
 	void event_move(Mix_Chunk* ball_impact_sound, bool& is_deleted, const bool& is_activated);
 	void handle_paddle_collision(const int& paddle_x, const int& paddle_y, const int& paddle_width, const int& paddle_height,
 								const bool& is_set_start_pos, Mix_Chunk* ball_impact_sound);

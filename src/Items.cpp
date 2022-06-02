@@ -42,8 +42,8 @@ void Items::render_items(SDL_Renderer* renderer, SDL_Texture* &item_texture, con
 }
 void Items::set_as_default()
 {
-    set_is_activated(false);
-    set_is_appeared(false);
+    is_activated = false;
+    is_appeared = false;
 }
 
 

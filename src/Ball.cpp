@@ -67,7 +67,7 @@ void Ball::set_ball(SDL_Event &events, bool &is_set_start_pos)
 	}
 }
 
-void Ball::move(bool &is_set_start_pos, bool& lose_lives_check, Mix_Chunk* ball_impact_sound, const bool& is_activated)
+void Ball::move(bool &is_set_start_pos, bool& lose_lives_check, Mix_Chunk* ball_impact_sound, bool& is_activated)
 {
 	x += speed_x;
 	y += speed_y;
@@ -103,6 +103,7 @@ void Ball::move(bool &is_set_start_pos, bool& lose_lives_check, Mix_Chunk* ball_
 		button_event = true;
 		lose_lives_check = true;
 	}
+	if (lose_lives_check) is_activated = false;
 }
 
 void Ball::event_move(Mix_Chunk* ball_impact_sound, bool& is_deleted, const bool& is_activated)
@@ -198,11 +199,6 @@ void Ball::handle_brick_collision(const int& brick_x, const int& brick_y, const 
 		else if (min == d4)
 		{
 			speed_x = fabs(speed_x);
-		}
-		else
-		{
-			speed_x = -speed_x;
-			speed_y = -speed_y;
 		}
 	}
 }
