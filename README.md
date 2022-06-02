@@ -57,21 +57,21 @@ Thanh trượt: ![NewPaddle](https://user-images.githubusercontent.com/100273875
 
 ## Minh hoạ
 
-Menu bắt đầu:
+- Menu bắt đầu:
 
 ![Main_menu](https://user-images.githubusercontent.com/100273875/171682490-ab575866-8dce-49fc-b0f6-c89397cd332f.png)
 
 
 
 
-Game play:
+- Game play:
 
 ![Main_play](https://user-images.githubusercontent.com/100273875/171682012-61e617c4-833b-4609-a4c8-e3a99b6d416d.png)
 
 
 
 
-Các màn chơi
+- Các màn chơi
 
 
 ![level3](https://user-images.githubusercontent.com/100273875/171684796-35102e20-295c-463e-bb6b-ec1c3d4218e6.png)
@@ -84,14 +84,14 @@ Các màn chơi
 
 
 
-Khi người chơi hoàn thành tất cả vòng chơi, menu chiến thắng sẽ xuất hiện
+- Khi người chơi hoàn thành tất cả vòng chơi, menu chiến thắng sẽ xuất hiện
 
 
 ![win_game](https://user-images.githubusercontent.com/100273875/171684956-2a9e2321-f376-44eb-93a0-0ee770662e5f.png)
 
 
 
-Ngược lại khi người chơi mất hết 3 mạng, menu kết thúc sẽ xuất hiện
+- Ngược lại khi người chơi mất hết 3 mạng, menu kết thúc sẽ xuất hiện
 
 
 ![game_over](https://user-images.githubusercontent.com/100273875/171685006-85cc249e-479b-46bd-a5d3-0a9230485f45.png)
@@ -102,10 +102,11 @@ Ngược lại khi người chơi mất hết 3 mạng, menu kết thúc sẽ xu
 
 
 # 3. Các kỹ thuật sử dụng
-- Sử dụng các thư viện đồ hoạ SDL2
-- Xử lý va chạm giữa các đối tượng đồ hoạ
-- Lập trình hướng đối tượng (Tính đóng gói, kế thừa)
+- Sử dụng các thư viện đồ hoạ SDL2.
+- Xử lý va chạm giữa các đối tượng đồ hoạ.
+- Lập trình hướng đối tượng (Tính đóng gói, kế thừa).
 - Xử lý mảng 1 chiều, mảng 2 chiều, vector, cấp phát động, con trỏ,...
+- Nhập xuất với tệp văn bản.
 
 
 # 4. Kết luận
