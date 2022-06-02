@@ -31,7 +31,7 @@ Thanh trượt: ![NewPaddle](https://user-images.githubusercontent.com/100273875
 ![RedBrick](https://user-images.githubusercontent.com/100273875/169706714-e1a8c249-bfe1-4d48-9148-552cf5ccbe34.png) Gạch đỏ sẽ chuyển thành gạch vàng sau một lần bóng đập.
 
 
-![PlatinumBrick](https://user-images.githubusercontent.com/100273875/171679480-d0db95c2-9d03-4520-b7dd-b0b6714e5e7e.png) Gạch xám không thể bị phá vỡ
+![PlatinumBrick](https://user-images.githubusercontent.com/100273875/171680180-bf2dd5c2-882e-45d2-bff3-6d7f91302a70.png) Gạch xám không thể bị phá vỡ
 
 
 
