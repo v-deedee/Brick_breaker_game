@@ -38,7 +38,21 @@ Thanh trượt: ![NewPaddle](https://user-images.githubusercontent.com/100273875
 
 - Khi phá vỡ một số viên gạch nhất định sẽ xuất hiện ngẫu nhiên các items. Có tất cả 5 loại item:
 
-![Gun_item](https://user-images.githubusercontent.com/100273875/171680561-81f00ce2-28fc-4977-8326-c52ad56cf016.png) Gun item: tạo loạt đạn từ thanh trượt giúp phá vỡ bức tường gạch nhanh hơn.
+![Gun_item](https://user-images.githubusercontent.com/100273875/171681253-6c53dcfd-b251-4762-8372-50cb82c97e7f.png)    Gun item: tạo loạt đạn từ thanh trượt giúp phá vỡ bức tường gạch nhanh hơn.
+
+
+![Multi_ball_item](https://user-images.githubusercontent.com/100273875/171681303-0e28e276-1163-40d7-b6b5-786c7cf8829e.png)    Multi ball item: tạo ra 3 quả bóng
+
+
+![Long_item](https://user-images.githubusercontent.com/100273875/171681455-a1a9a967-72e4-43ad-9c3d-87695f6cb60b.png)    Long item: kéo dài thanh trượt
+
+
+![Short_item](https://user-images.githubusercontent.com/100273875/171681532-cbc53350-7658-4da3-b0bb-23e9693d3efc.png)    Short item: làm ngắn thanh trượt
+
+
+![Speed_up_item](https://user-images.githubusercontent.com/100273875/171681605-a215e425-be46-4b83-91d9-180ad3cf2b9c.png)    Speed up item: tăng tốc độ bóng
+
+
 
 
 ## Minh hoạ
