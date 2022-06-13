@@ -31,14 +31,14 @@ Thanh trượt: ![NewPaddle](https://user-images.githubusercontent.com/100273875
 ![RedBrick](https://user-images.githubusercontent.com/100273875/169706714-e1a8c249-bfe1-4d48-9148-552cf5ccbe34.png) Gạch đỏ sẽ chuyển thành gạch vàng sau một lần bóng đập.
 
 
-![PlatinumBrick](https://user-images.githubusercontent.com/100273875/171680180-bf2dd5c2-882e-45d2-bff3-6d7f91302a70.png) Gạch xám không thể bị phá vỡ.
+![PlatinumBrick](https://user-images.githubusercontent.com/100273875/171680180-bf2dd5c2-882e-45d2-bff3-6d7f91302a70.png) Khối sắt không thể bị phá vỡ.
 
 
 
 
 - Khi phá vỡ một số viên gạch nhất định sẽ xuất hiện ngẫu nhiên các items. Có tất cả 5 loại item:
 
-![Gun_item](https://user-images.githubusercontent.com/100273875/171681253-6c53dcfd-b251-4762-8372-50cb82c97e7f.png)    Gun item: tạo loạt đạn từ thanh trượt giúp phá vỡ bức tường gạch nhanh hơn.
+![Gun_item](https://user-images.githubusercontent.com/100273875/171681253-6c53dcfd-b251-4762-8372-50cb82c97e7f.png)    Gun item: tạo loạt đạn từ thanh trượt giúp phá vỡ bức tường gạch nhanh hơn (không thể phá khối sắt).
 
 
 ![Multi_ball_item](https://user-images.githubusercontent.com/100273875/171681303-0e28e276-1163-40d7-b6b5-786c7cf8829e.png)    Multi ball item: tạo ra 3 quả bóng
