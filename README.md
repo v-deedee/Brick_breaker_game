@@ -9,6 +9,12 @@ Tạo folder muốn cài đặt game, mở bằng Terminal (Visual Studio Code, 
 
 `.\Brick_game.exe`
 
+Nếu muốn thay đổi mã nguồn, sau khi lưu thay đổi nhập lệnh sau vào Terminal:
+
+`make`
+
+Lệnh này sẽ biên dịch lại chương trình ra file Brick_game.exe
+
 
 # 2. Mô tả
 Trò chơi lấy ý tưởng từ game phá gạch cổ điển, người chơi điều khiển thanh trượt đỡ quả bóng đập qua lại để phá vỡ bức tường gạch.
