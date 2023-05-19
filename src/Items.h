@@ -21,8 +21,8 @@ public:
 
     bool get_is_activated() {return is_activated;};
     bool get_is_appeared() {return is_appeared;};
-    bool set_is_activated(const bool& value) {is_activated = value;};
-    bool set_is_appeared(const bool& value) {is_appeared = value;};
+    void set_is_activated(const bool& value) {is_activated = value;};
+    void set_is_appeared(const bool& value) {is_appeared = value;};
 
 private:
     bool is_activated;

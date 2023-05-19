@@ -45,10 +45,10 @@ public:
 	double get_y() { return y; };
 	double get_speed_x() { return speed_x; };
 	double get_speed_y() { return speed_y; };
-	double set_x(const double& value) { x = value; };
-	double set_y(const double& value) { y = value; };
-	double set_speed_x(const double& value) { speed_x = value; };
-	double set_speed_y(const double& value) { speed_y = value; };
+	void set_x(const double& value) { x = value; };
+	void set_y(const double& value) { y = value; };
+	void set_speed_x(const double& value) { speed_x = value; };
+	void set_speed_y(const double& value) { speed_y = value; };
 
 private:
 	SDL_Texture* ball_texture;

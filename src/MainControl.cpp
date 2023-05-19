@@ -4,21 +4,22 @@ MainControl::MainControl()
 {
 	window = NULL;
 	renderer = NULL;
-	main_ball = new Ball();
-
-	paddle = new Paddle();
-	level = new Level();
-	player_lives = new PlayerLives();
 	ball_impact_sound[0] = NULL;
 	ball_impact_sound[1] = NULL;
 	gun_sound = NULL;
 	multi_ball_sound = NULL;
 	game_over_sound = NULL;
 	win_game_sound = NULL;
+
+	main_ball = new Ball();
+	paddle = new Paddle();
+	level = new Level();
+	player_lives = new PlayerLives();
 	level_text = new Text();
 	score_text = new Text();
 	time_text = new Text();
 	menu = new Menu();
+
 	gun_items = new GunItems();
 	multi_items = new MultiItems();
 	long_items = new LongItems();
@@ -76,11 +77,8 @@ void MainControl::initializeSDL()
 
 int i_, j_;
 void MainControl::update_game(bool &is_set_start_pos, bool &lose_lives_check, int &die_number, bool &is_running, const std::string& l_text,
-								bool& game_over, bool& items_appearing, int& score, int& destroyed_bricks, int& item_index)
+								bool& game_over, bool& items_appearing, int& score, int& destroyed_bricks, const int& item_index)
 {
-	level_text->free();
-	score_text->free();
-
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 	SDL_RenderClear(renderer);
 
@@ -89,15 +87,12 @@ void MainControl::update_game(bool &is_set_start_pos, bool &lose_lives_check, in
 	SDL_Rect play_ground = { (SCREEN_WIDTH - PLAY_GROUND_WIDTH) / 2, (SCREEN_HEIGHT - PLAY_GROUND_HEIGHT) / 2, PLAY_GROUND_WIDTH, PLAY_GROUND_HEIGHT };
 	SDL_RenderDrawRect(renderer, &play_ground);
 
-	paddle->follow_mouse();
-	paddle->render_paddle(renderer);
-
-	player_lives->render(renderer);
-
+	level_text->free();
 	level_text->set_up_text(l_text, 30, WHITE_COLOR);
 	level_text->load_font(renderer);
 	level_text->render(10, 10, renderer);
 
+	score_text->free();
 	std::string sc_text = "SCORE:";
 	std::string sc_value = std::to_string(score);
 	sc_text += sc_value;
@@ -105,11 +100,13 @@ void MainControl::update_game(bool &is_set_start_pos, bool &lose_lives_check, in
 	score_text->load_font(renderer);
 	score_text->render(10, 655, renderer);
 
+	paddle->follow_mouse();
+	paddle->render_paddle(renderer);
+
 	if (is_set_start_pos)
 	{
 		main_ball->set_start_position(paddle->getX(), paddle->getY(), paddle->PADDLE_WIDTH, paddle->PADDLE_HEIGHT);
 	}
-
 	if (!multi_items->get_is_activated())
 	{
 		bool val = speed_up_items->get_is_activated();
@@ -120,6 +117,7 @@ void MainControl::update_game(bool &is_set_start_pos, bool &lose_lives_check, in
 		speed_up_items->set_is_activated(val);
 	}
 
+	player_lives->render(renderer);
 	if (lose_lives_check)
 	{
 		die_number++;
@@ -139,6 +137,11 @@ void MainControl::update_game(bool &is_set_start_pos, bool &lose_lives_check, in
 	paddle->handle_long_paddle_event(long_items->get_is_activated(), short_items->get_is_activated());
 	paddle->handle_short_paddle_event(long_items->get_is_activated(), short_items->get_is_activated());
 
+	handle_items(items_appearing, item_index);
+}
+
+void MainControl::handle_items(bool& items_appearing, const int& item_index)
+{
 	if (items_appearing)
 	{
 		switch(item_index)
@@ -939,13 +942,6 @@ void MainControl::close()
 {
 	SDL_DestroyWindow(window);
 	SDL_DestroyRenderer(renderer);
-	window = NULL; renderer = NULL;
-	delete main_ball;
-
-	delete paddle;
-	delete level;
-	delete player_lives;
-
 	Mix_FreeChunk(ball_impact_sound[0]);
 	Mix_FreeChunk(ball_impact_sound[1]);
 	Mix_FreeChunk(gun_sound);
@@ -953,10 +949,15 @@ void MainControl::close()
 	Mix_FreeChunk(game_over_sound);
 	Mix_FreeChunk(win_game_sound);
 
+	delete main_ball;
+	delete paddle;
+	delete level;
+	delete player_lives;
 	delete level_text;
 	delete score_text;
 	delete time_text;
 	delete menu;
+
 	delete gun_items;
 	delete multi_items;
 	delete long_items;
